@@ -33,20 +33,27 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   
  
- function calculateTotals() {
-            const income = document.getElementById('income').value || 0;
-            const fixedExpenses = Array.from(document.querySelectorAll('.fixed')).reduce((sum, el) => sum + (el.value || 0), 0);
-            const variableExpenses = Array.from(document.querySelectorAll('.variable')).reduce((sum, el) => sum + (el.value || 0), 0);
-            const savings = Array.from(document.querySelectorAll('.savings')).reduce((sum, el) => sum + (el.value || 0), 0);
-            
-            const totalExpenses = fixedExpenses + variableExpenses + savings;
-            const difference = income - totalExpenses;
-            
-            document.getElementById('totalIncome').textContent = `$${income}`;
-            document.getElementById('totalExpenses').textContent = `$${totalExpenses}`;
-            document.getElementById('difference').textContent = `$${difference}`;
-            document.getElementById('difference').style.color = difference > 0 ? '#28a745' : '#dc3545';
-        }
+  function calculateTotals() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+
+    const fixedExpenses = Array.from(document.querySelectorAll('.fixed'))
+        .reduce((sum, el) => sum + (parseFloat(el.value) || 0), 0);
+
+    const variableExpenses = Array.from(document.querySelectorAll('.variable'))
+        .reduce((sum, el) => sum + (parseFloat(el.value) || 0), 0);
+
+    const savings = Array.from(document.querySelectorAll('.savings'))
+        .reduce((sum, el) => sum + (parseFloat(el.value) || 0), 0);
+
+    const totalExpenses = fixedExpenses + variableExpenses + savings;
+    const difference = income - totalExpenses;
+
+    document.getElementById('totalIncome').textContent = `$${income.toFixed(2)}`;
+    document.getElementById('totalExpenses').textContent = `$${totalExpenses.toFixed(2)}`;
+    document.getElementById('difference').textContent = `$${difference.toFixed(2)}`;
+    document.getElementById('difference').style.color = difference >= 0 ? '#28a745' : '#dc3545';
+}
+
 
         function addFixedExpense() {
             const section = document.getElementById('fixed-section');
