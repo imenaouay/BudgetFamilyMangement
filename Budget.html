@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Budget Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+   
+        
+        <!-- Back Button -->
+        <div class="export-buttons">
+            <button class="export-btn export-btn-secondary" onclick="window.history.back()">Back</button>
+        </div>
+        <h1>Family Budget Manager</h1>
+        <!-- How to Use Card -->
+        <div class="section steps">
+            <h3>How to Use:</h3>
+            <div class="step">1. Enter your total monthly net income</div>
+            <div class="step">2. Fill fixed expenses (rent, utilities, etc)</div>
+            <div class="step">3. Estimate variable expenses (groceries, etc)</div>
+            <div class="step">4. Allocate savings and debt payments</div>
+            <div class="step">5. Aim for $0 difference (zero-based budget)</div>
+        </div>
+
+        <!-- Income Section -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">Income</div>
+            </div>
+            <div class="input-group">
+                <label>Total Monthly Net Income:</label>
+                <input type="number" id="income" min="0" oninput="calculateTotals()">
+            </div>
+        </div>
+
+        <!-- Fixed Expenses -->
+        <div class="section" id="fixed-section">
+            <div class="section-header">
+                <div class="section-title">Fixed Expenses (Needs)</div>
+            </div>
+            <div class="input-group">
+                <label>Rent/Mortgage:</label>
+                <input type="number" class="fixed" min="0" oninput="calculateTotals()">
+            </div>
+            <div class="input-group">
+                <label>Utilities:</label>
+                <input type="number" class="fixed" min="0" oninput="calculateTotals()">
+            </div>
+            <div class="input-group">
+                <label>Insurance:</label>
+                <input type="number" class="fixed" min="0" oninput="calculateTotals()">
+            </div>
+            <div class="input-group">
+                <label>Loan Payments:</label>
+                <input type="number" class="fixed" min="0" oninput="calculateTotals()">
+            </div>
+            <button class="export-btn export-btn-secondary" onclick="addFixedExpense()">Add Fixed Expense</button>
+        </div>
+
+        <!-- Variable Expenses -->
+        <div class="section" id="variable-section">
+            <div class="section-header">
+                <div class="section-title">Variable Expenses (Wants & Essentials)</div>
+            </div>
+            <div class="input-group">
+                <label>Groceries:</label>
+                <input type="number" class="variable" min="0" oninput="calculateTotals()">
+            </div>
+            <div class="input-group">
+                <label>Transportation:</label>
+                <input type="number" class="variable" min="0" oninput="calculateTotals()">
+            </div>
+            <div class="input-group">
+                <label>Childcare/Education:</label>
+                <input type="number" class="variable" min="0" oninput="calculateTotals()">
+            </div>
+            <div class="input-group">
+                <label>Personal & Entertainment:</label>
+                <input type="number" class="variable" min="0" oninput="calculateTotals()">
+            </div>
+            <div class="input-group">
+                <label>Miscellaneous:</label>
+                <input type="number" class="variable" min="0" oninput="calculateTotals()">
+            </div>
+            <button class="export-btn export-btn-secondary" onclick="addVariableExpense()">Add Variable Expense</button>
+        </div>
+
+        <!-- Savings Section -->
+        <div class="section" id="savings-section">
+            <div class="section-header">
+                <div class="section-title">Savings and Debt Repayment</div>
+            </div>
+            <div class="input-group">
+                <label>Emergency Fund:</label>
+                <input type="number" class="savings" min="0" oninput="calculateTotals()">
+            </div>
+            <div class="input-group">
+                <label>Retirement Savings:</label>
+                <input type="number" class="savings" min="0" oninput="calculateTotals()">
+            </div>
+            <div class="input-group">
+                <label>Extra Debt Payments:</label>
+                <input type="number" class="savings" min="0" oninput="calculateTotals()">
+            </div>
+            <button class="export-btn export-btn-secondary" onclick="addSavings()">Add Savings/Debt Repayment</button>
+        </div>
+
+        <!-- Budget Summary -->
+        <div class="summary-section">
+            <h2>Budget Summary</h2>
+            <div class="summary-item">Total Income: <span id="totalIncome">$0</span></div>
+            <div class="summary-item">Total Expenses: <span id="totalExpenses">$0</span></div>
+            <div class="summary-item">Difference: <span id="difference">$0</span></div>
+        </div>
+
+        <!-- Export Buttons -->
+        <div class="export-buttons">
+            <button class="export-btn" onclick="exportToExcel()">Export to Excel</button>
+            <button class="export-btn" onclick="exportToPDF()">Export to PDF</button>
+        </div>
+    </div>
+
+      <!-- Footer -->
+  <footer>
+    <p>© 2025 Created by <span class="brand">IMDevArt</span></p>
+  </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
