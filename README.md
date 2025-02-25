@@ -1,3 +1,6 @@
+https://github.com/user-attachments/assets/50d6695a-e182-48b1-bb77-db89352b0dc2
+
+
 BudgetFamilyManagement - Smart Budgeting for Your Family
 BudgetFamilyManagement is a modern web application designed to help families manage their finances efficiently. Whether you're planning monthly expenses, tracking savings, or setting financial goals, this platform provides intuitive tools to simplify budgeting and ensure financial stability.
 
@@ -38,5 +41,4 @@ PostgreSQL / MySQL (SQL, ideal for well-structured relational data)
 
 
 
-https://github.com/user-attachments/assets/50d6695a-e182-48b1-bb77-db89352b0dc2
 
